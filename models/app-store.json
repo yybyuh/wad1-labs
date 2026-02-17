@@ -1,0 +1,18 @@
+{
+    "info": {
+        "appTitle": "Playlist maker",
+        "version": 0.2,
+        "creators": [
+            {
+            "name": "Cian Byrne",
+            "role": "web developer"
+            },
+            {
+            "name":"sum1 else",
+            "role":"web developer"
+            }
+        ],
+        "location": "sumwhere"
+
+    }
+}
