@@ -2,6 +2,7 @@
 
 import logger from "../utils/logger.js";
 import lab from '../models/lab.js'
+import empStore from "../models/emp-store.js";
 
 const about = {
    /*  createView(request, response){
@@ -13,7 +14,7 @@ const about = {
     
     const viewData = {
       title: "About the Playlist App",
-      info: lab.getAppInfo()
+      emps: empStore.getEmpInfo(),
     };
     
     //logger.debug(viewData);

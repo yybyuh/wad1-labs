@@ -3,29 +3,31 @@
 <section class="ui left aligned middle aligned segment">
   
     <h2>About the Playlist App</h2>
-      <p>
-        More information about the app
-      </p>
+      
+      <h3>Our Team</h3>
+
+ <div class="ui centered cards">
+  {{#each emps}}
+    <div class="ui card">
+      <div class="image">
+        <img src="{{image}}">
+      </div>
+
+      <div class="content">
+        <div class="header">{{fullname}}</div>
+        <div class="meta">Joined in {{joined}}</div>
+        <div class="description">
+          {{name}} is a {{job}} living in {{city}}.
+        </div>
+      </div>
+
+      <div class="extra content">
+        <i class="user icon"></i>
+        {{mates}} contacts
+      </div>
+    </div>
+  {{/each}}
+</div>
 
 </section>
 
-<div class="ui centered card">
-  <div class="image">
-    <img src="/stevie.jpg">
-  </div>
-  <div class="content">
-    <a class="header"> Stevie Feliciano</a>
-    <div class="meta">
-      <span class="date">Joined in 2016 </span>
-    </div>
-    <div class="description">
-      Stevie is an Web Developer living in Boston.
-    </div>
-  </div>
-  <div class="extra content">
-    <a>
-      <i class="user icon"></i>
-        35 contacts
-    </a>
-  </div>
-</div>
