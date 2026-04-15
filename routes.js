@@ -22,6 +22,9 @@ router.post('/dashboard/addplaylist', dashboard.addPlaylist)
 router.get('/dashboard/deleteplaylist/:id', dashboard.deletePlaylist);
 router.get('/playlist/:id/deletesong/:songid', playlist.deleteSong);
 
+router.get('/searchCategory', dashboard.createView)
+router.get('/sortData', dashboard.createView)
+
 router.get('/error', (request, response) => response.status(404).end('PAge not found'))
 
 export default router
