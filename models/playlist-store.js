@@ -41,7 +41,18 @@ const playlistStore = {
     return this.store.findBy(
       this.collection,
       (playlist => playlist.title.toLowerCase().includes(search.toLowerCase())))
-}
+},
+
+getUserPLaylists(userId){
+    return this.store.findBy(this.collection, (playlist => plaaylist.userid === userid))
+},
+
+searchUserPlaylist(userid, search){
+    return this.store.findBy(
+        this.collection,
+        (playlist => playlist.userid === userid && playlist.title.toLowerCase().includes(search.toLowerCase()))
+    )
+},
 
 }  
 

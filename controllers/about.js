@@ -3,6 +3,7 @@
 import logger from "../utils/logger.js";
 import lab from '../models/lab.js'
 import empStore from "../models/emp-store.js";
+import accounts from './accounts.js';
 
 const about = {
    /*  createView(request, response){
@@ -10,16 +11,19 @@ const about = {
         response.send('about the playlist app')
     } */
    createView(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
     logger.info("About page loading!");
     
-    const viewData = {
-      title: "About the Playlist App",
-      emps: empStore.getEmpInfo(),
-    };
-    
-    //logger.debug(viewData);
-    response.render('about', viewData);   
-  },
+    if (loggedInUser) {
+      const viewData = {
+        title: 'About the Playlist App',
+        fullname: loggedInUser.firstName + ' ' + loggedInUser.lastName,
+        employees: empStore.getEmployees(),
+      };
+      response.render('about', viewData);
+    }
+    else response.redirect('/');    
+},
 }
 
 export default about
