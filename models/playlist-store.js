@@ -24,9 +24,16 @@ const playlistStore = {
     this.store.removeItem(this.collection, id, this.array, songId);
     },
 
-    addPlaylist(playlist) {
-    this.store.addCollection(this.collection, playlist);
-    },
+      async addPlaylist(playlist, file, response) {
+    try {
+      playlist.picture = await this.store.addToCloudinary(file);
+      this.store.addCollection(this.collection, playlist);
+      response();
+    } catch (error) {
+      logger.error("Error processing playlist:", error);
+      response(error);
+    }
+  },
 
     removePlaylist(id) {
     const playlist = this.getPlaylist(id);
@@ -43,8 +50,8 @@ const playlistStore = {
       (playlist => playlist.title.toLowerCase().includes(search.toLowerCase())))
 },
 
-getUserPLaylists(userId){
-    return this.store.findBy(this.collection, (playlist => plaaylist.userid === userid))
+getUserPlaylists(userId){
+    return this.store.findBy(this.collection, (playlist => playlist.userid === userId))
 },
 
 searchUserPlaylist(userid, search){
