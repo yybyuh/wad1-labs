@@ -75,11 +75,12 @@ const dashboard = {
   },
 
 
-  deletePlaylist(request, response) {
+    deletePlaylist(request, response) {
     const playlistId = request.params.id;
     logger.debug(`Deleting Playlist ${playlistId}`);
-    playlistStore.removePlaylist(playlistId);
-    response.redirect("/dashboard");
+    playlistStore.removePlaylist(playlistId, function() {
+      response.redirect("/dashboard");
+    });
   },
 
 };

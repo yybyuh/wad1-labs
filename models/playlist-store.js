@@ -35,10 +35,21 @@ const playlistStore = {
     }
   },
 
-    removePlaylist(id) {
+      async removePlaylist(id, response) {
     const playlist = this.getPlaylist(id);
+
+    if (playlist.picture && playlist.picture.public_id) {
+      try {
+        await this.store.deleteFromCloudinary(playlist.picture.public_id);
+        logger.info("Cloudinary image deleted");
+      } catch (err) {
+        logger.error("Failed to delete Cloudinary image:", err);
+      }
+    }
+
     this.store.removeCollection(this.collection, playlist);
-    },
+    response();
+  },
 
     editSong(id, songId, updatedSong) {
     this.store.editItem(this.collection, id, songId, this.array, updatedSong);
